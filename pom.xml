@@ -5,7 +5,7 @@
 
     <groupId>io.github.vojke98</groupId>
     <artifactId>phase-video-api</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <name>Phase video API</name>
     <description>What a video source plugin for Phase SCADA implements (cameras: live video, moving them, recordings), and what
         the Phase server calls - nothing else of the server. Its only dependency is the Phase driver API, for the settings schema

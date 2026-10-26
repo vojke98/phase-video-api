@@ -5,7 +5,7 @@ the server. A video source is a recorder, a video management system or a camera 
 its plugins folder at run time, so a new kind of source needs no change to Phase itself. It may bring protocol drivers too (the
 [driver API](https://github.com/vojke98/phase-driver-api)) - a recorder's state as tags.
 
-- Coordinates: `io.github.vojke98:phase-video-api:1.0.0`, package `io.github.vojke98.phase.video.api`
+- Coordinates: `io.github.vojke98:phase-video-api:1.1.0`, package `io.github.vojke98.phase.video.api`
 - Depends on the driver API only (its `SettingsSchema`). Java 21 or newer.
 - License: Apache License 2.0 - write and sell plugins of your own as you like.
 
@@ -29,7 +29,7 @@ branch, laid out as a Maven repository:
 <dependency>
     <groupId>io.github.vojke98</groupId>
     <artifactId>phase-video-api</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <scope>provided</scope>
 </dependency>
 ```
@@ -40,7 +40,8 @@ branch, laid out as a Maven repository:
   settings (built with the driver API's `SettingsSchema` - the server checks them, the web app builds the form), `apiVersion()`
   (return `VideoApi.VERSION`) and `create(settings)`.
 - **`VideoSource`** - one source, called from many threads at once (everybody watching): `cameras()` with what each can do
-  (`Capabilities`: live formats, a picture, `Ptz` - turning, zoom, presets -, recordings), `live(camera, format)`, `fetch(camera,
+  (`Capabilities`: live formats, a picture, `Ptz` - turning, zoom, presets -, recordings, a smaller stream), `live(camera, format)` - and `live(camera, format, stream)` for a
+  camera with a sub stream (`Stream.SUB`: played in tiles, the full one on the whole screen) -, `fetch(camera,
   uri)` for what a playlist names, `snapshot`, `ptz(camera, command)`, `recordings(camera, from, to)`, `playback(camera, from,
   to)` and `close()`. Only what a camera's capabilities say is ever called; the screen offers only that.
 

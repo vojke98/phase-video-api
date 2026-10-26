@@ -6,6 +6,12 @@ release that a plugin built against an older one would not work with is a MAJOR 
 
 ## [Unreleased]
 
+### Added
+
+- A camera's **smaller stream** (sub stream): `Capabilities.substream()`, `Stream` (`MAIN`, `SUB`) and
+  `VideoSource.live(camera, format, stream)` - Phase plays it in tiles and the full one on the whole screen. Additions only:
+  a plugin built against 1.0 works unchanged (`VideoApi.VERSION` stays 1).
+
 ## [1.0.0]
 
 ### Added

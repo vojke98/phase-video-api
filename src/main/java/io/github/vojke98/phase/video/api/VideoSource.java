@@ -27,6 +27,14 @@ public interface VideoSource extends AutoCloseable {
     Media live(String camera, LiveFormat format) throws IOException;
 
     /**
+     * The camera's live video from one of its streams: {@link Stream#SUB} is asked for only when {@link Capabilities#substream()}.
+     * Without one, the full stream ({@link #live(String, LiveFormat)}).
+     */
+    default Media live(String camera, LiveFormat format, Stream stream) throws IOException {
+        return live(camera, format);
+    }
+
+    /**
      * A resource a playlist of this source named (a segment, another playlist). Fetch only what belongs to this source - an URI on
      * another server is refused ({@link IllegalArgumentException}): the server would otherwise fetch anything for anybody.
      */
